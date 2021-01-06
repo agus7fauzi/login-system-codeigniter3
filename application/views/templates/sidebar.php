@@ -1,0 +1,55 @@
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url(); ?>">
+        <div class="sidebar-brand-icon">
+            <i class="fas fa-terminal"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">agus7fauzi admin</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+    <!-- Loop the Menu -->
+    <?php foreach ($menu as $menuItem) : ?>
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            <?= $menuItem['menu'] ?>
+        </div>
+
+        <!-- Loop the Sub Menu -->
+        <?php foreach ($menuItem['subMenu'] as $subMenuItem) : ?>
+            <!-- Nav Item -->
+            <?php if ($title == $subMenuItem['title']) : ?>
+                <li class="nav-item active">
+                <?php else : ?>
+                <li class="nav-item">
+                <?php endif; ?>
+                <a class="nav-link pb-0" href="<?= base_url($subMenuItem['url']); ?>">
+                    <i class="<?= $subMenuItem['icon']; ?>"></i>
+                    <span><?= $subMenuItem['title']; ?></span></a>
+                </li>
+            <?php endforeach; ?>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider mt-3">
+
+        <?php endforeach; ?>
+
+        <li class="nav-item">
+            <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
+                <i class="fas fa-fw fa-sign-out-alt"></i>
+                <span>Logout</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+</ul>
+<!-- End of Sidebar -->
